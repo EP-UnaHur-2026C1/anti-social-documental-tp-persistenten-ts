@@ -15,6 +15,7 @@ connectDatabase();
 
 app.use(express.json());
 
+app.use("/uploads", express.static(path.resolve(__dirname, "../uploads")));
 app.use("/archivos", express.static(path.resolve(__dirname, "uploads")));
 
 app.get("/", (req, res) => {
