@@ -13,11 +13,17 @@ async function create(data) {
 }
 
 async function list() {
-  return await Post.find().populate("user", "nickName").populate("tags", "description");
+  return await Post.find()
+    .populate("user", "nickName")
+    .populate("tags", "description")
+    .populate("comments", "text user fechaPublicacion");
 }
 
 async function getById(id) {
-  const post = await Post.findById(id).populate("user", "nickName").populate("tags", "description");
+  const post = await Post.findById(id)
+    .populate("user", "nickName")
+    .populate("tags", "description")
+    .populate("comments", "text user fechaPublicacion");
   if (!post) {
     const err = new Error("Publicación no encontrada");
     err.status = 404;

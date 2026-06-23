@@ -15,7 +15,11 @@ async function create(data) {
     err.status = 404;
     throw err;
   }
-  return await Comment.create(data);
+
+  const newComment = await Comment.create(data);
+  post.comments.push(newComment._id);
+  await post.save();
+  return newComment;
 }
 
 async function list() {

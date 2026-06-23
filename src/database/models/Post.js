@@ -17,7 +17,11 @@ const postSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Tag"
     }],
-    images: [String]
+    images: [String],
+    comments: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Comment"
+    }]
 }, {
     timestamps: {
         createdAt: 'fechaPublicacion',
